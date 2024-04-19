@@ -50,6 +50,30 @@ SETTING THE STATIC IP:
    1. Add the MAC Address to the inputbox next to "MAC ADDRESS".
    2. Add your chosen IP address to the inputbox next to "IP ADDRESS". **NOTE: Only change the last 3 digits of the IP leave the rest as is**
 
+### USE THE FOLLOWING IMAGES AS A VISUAL GUIDE
+#### GETTING YOUR IP ADDRESS
+<img src="./images/IP ADDRESS.png" alt="Image of finding IP address" width="200"/>
+
+#### FINDING DEVICE MAC ADDRESS
+<img src="./images/CONNECTION.png" alt="Image of path to Device" width="300"/>
+
+<img src="./images/FIND MAC ADDRESS.png" alt="Image of devices connected to network" width="350"/>
+
+#### GETTING TO STATIC DHCP
+<img src="./images/TRIPLE LINE.png" alt="Image of path to DHCP" width="300"/>
+
+<img src="./images/NETWORK SETTINGS.png" alt="Image of path to DHCP" width="100"/>
+
+<img src="./images/GETTING TO DHCP.png" alt="Image of path to DHCP" width="300"/>
+
+<img src="./images/CREATING NEW STATIC DHCP.png" alt="Image of DHCP Page" width="300"/>
+
+#### ADDING STATIC DHCP
+<img src="./images/ADDING IP AND MAC ADDRESS.png" alt="Image of adding new Static DHCP" width="300"/>
+
+
+
+
 ## <span style="font-variant: small-caps;">Setup</span>
 
 ### STEP 1: CREATE A BOOTABLE USB (USING RUFUS)
@@ -62,23 +86,21 @@ SETTING THE STATIC IP:
 3. Under 'BOOT SELECTION' keep it on 'ISO IMAGE'
 4. Click on 'SELECT' next to 'Boot selection'
 5. Select the OS you want to use and click 'OPEN' **YOU NEED TO HAVE AN ISO COPY OF THE SOFTWARE ON YOUR MACHINE**
-7. 'PARTITION SCHEME' depends on the scheme of your hard drive you are going to install it on. I recommend leaving it as default.
-8. 'TARGET SYSTEM' depends on your motherboard if you have an old motherboard I recommend leaving it as default.
-9. Click on 'START' to start the process.
-10. If you get the POPUP 'ISO HYBRID IMAGE DETECTED' just use the recommened option.
-</br></br>
-<div style="text-align:center">
-  <span style="font-size: 18; font-weight: bold;"> ISO HYBRID POP UP</span>
-</div>
+6. 'PARTITION SCHEME' depends on the scheme of your hard drive you are going to install it on. I recommend leaving it as default.
+7. 'TARGET SYSTEM' depends on your motherboard if you have an old motherboard I recommend leaving it as default.
+8. Click on 'START' to start the process.
+9. If you get the POPUP 'ISO HYBRID IMAGE DETECTED' just use the recommened option.
+
+
 </br>
-<img src="/images/ISOHybrid image detected.png" alt="Image of ISO HYBRID IMAGE DETECTED popup" width="100%"/>
+<span style="font-size: 18; font-weight: bold;"> ISO HYBRID POP UP</span>
+</br>
+<img src="./images/ISOHybrid image detected.png" alt="Image of ISO HYBRID IMAGE DETECTED popup" width="100%"/>
 
 
-<div style="text-align:center">
   <span style="font-size: 18; font-weight: bold;">Completed Rufus Setup</span>
-</div>
 </br>
-<img src="/images/Rufus.png" alt="Image of Completed Rufus Setup" width="100%"/>
+<img src="./images/Rufus.png" alt="Image of Completed Rufus Setup" width="100%"/>
 
 
 ### STEP 2: Install Ubuntu Server on your chosen device

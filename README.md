@@ -27,9 +27,32 @@ SOFTWARE
   - For LINUX it is recommend that you use VENTOY. [LINK](https://www.ventoy.net/en/download.html)
   - For MAC OS it is recommend that you use ETCHER. [LINK](https://etcher.balena.io/#download-etcher)
 
+NETWORK
+
+#### You need to reserve an IP address (DCHP) for your server. To do that you need to have the mac address.
+
+#### The follwing instructions are for the ZYXEL Router. 
+
+FINDING THE MAC ADDRESS:
+1. Open a brower and enter your IP address. 
+   1. To find your IP address on a window machine open command promt and type "ipconfig".
+   2. You are looking for the "Default Gateway". It is generally 192.168.1.1
+2. Login to your router. (the password and username on the back of the router) 
+3. Click on "CONNECTIVITY", find the server MAC address. **NOTE: For this to work the device you are planning on turning into your sever needs to be connected to the network** 
+4. If the device is on and connected to the network it should appear here. If it is connected via WiFi check the "WiFi" Page, if it is wired check the "Wired" Page.
+
+SETTING THE STATIC IP:
+
+5. Click on the 3 horizontal lines in the corner.
+5. Click on "NETWORK SETTING" > "HOME NETWORK" > "STATIC DHCP".
+6. Click on "+ STATIC DHCP CONFIGURATION". 
+7. The only things you are chaning are:
+   1. Add the MAC Address to the inputbox next to "MAC ADDRESS".
+   2. Add your chosen IP address to the inputbox next to "IP ADDRESS". **NOTE: Only change the last 3 digits of the IP leave the rest as is**
+
 ## <span style="font-variant: small-caps;">Setup</span>
 
-### STEP 1 CREATE A BOOTABLE USB (USING RUFUS)
+### STEP 1: CREATE A BOOTABLE USB (USING RUFUS)
 
 #### I would recommend you keep all the default the same. You can change the name of the flash drive by changing the text under 'VOLUME LABLE'.
 
@@ -43,11 +66,27 @@ SOFTWARE
 8. 'TARGET SYSTEM' depends on your motherboard if you have an old motherboard I recommend leaving it as default.
 9. Click on 'START' to start the process.
 10. If you get the POPUP 'ISO HYBRID IMAGE DETECTED' just use the recommened option.
+</br></br>
 <div style="text-align:center">
-<img src="./image/ISOHybrid image detected.png" alt="Image of ISO HYBRID IMAGE DETECTED popup" width="100%"/>
+  <span style="font-size: 18; font-weight: bold;"> ISO HYBRID POP UP</span>
 </div>
+</br>
+<img src="/images/ISOHybrid image detected.png" alt="Image of ISO HYBRID IMAGE DETECTED popup" width="100%"/>
+
 
 <div style="text-align:center">
-  <img src="./image/Rufus.png" alt="Image of Completed Rufus Setup" width="100%"/>
+  <span style="font-size: 18; font-weight: bold;">Completed Rufus Setup</span>
 </div>
+</br>
+<img src="/images/Rufus.png" alt="Image of Completed Rufus Setup" width="100%"/>
 
+
+### STEP 2: Install Ubuntu Server on your chosen device
+
+**Note: The installation process will wipe the device you choose to install the OS on. BACKUP ANY DATA BEFORE CONTINUING**
+
+1. Plug the flash drive with the chosen OS on it into your old device. If you are planing on installing your chosen OS on a flash drive plug in the other flash drive as well. 
+2. Start Up the device and boot into the BIOS.
+3. Set the boot device to your flash drive with the OS on it (Some BIOS's will allow you to select the boot device without going futher into the BIOS by pressing F12. Check if your BIOS allows this.). Continue the Start Up process.
+4. When it fully boots up you should see the following screen. Select "Try or Install Ubuntu Server".
+5. Select your prefered language

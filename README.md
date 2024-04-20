@@ -76,6 +76,12 @@ SETTING THE STATIC IP:
 
 ## <span style="font-variant: small-caps;">Setup</span>
 
+### Overview of Steps
+
+#### - Step 1: Create a Bootable USB Drive
+#### - Step 2: Installing and Configuring Ubuntu Server
+#### - Step 3: Setting up and Configuring Samba
+
 ### STEP 1: CREATE A BOOTABLE USB (USING RUFUS)
 
 #### I would recommend you keep all the default the same. You can change the name of the flash drive by changing the text under 'VOLUME LABLE'.
@@ -93,12 +99,18 @@ SETTING THE STATIC IP:
 
 
 </br>
-<span style="font-size: 18; font-weight: bold;"> ISO HYBRID POP UP</span>
+<div style="text-align:center">
+  <span style="font-size: 18px; font-weight: bold;">ISO HYBRID POP UP</span>
+</div>
+
 </br>
 <img src="./images/ISOHybrid image detected.png" alt="Image of ISO HYBRID IMAGE DETECTED popup" width="100%"/>
+</br>
+</br>
 
-
-  <span style="font-size: 18; font-weight: bold;">Completed Rufus Setup</span>
+<div style="text-align:center">
+  <span style="font-size: 18px; font-weight: bold;">Completed Rufus Setup</span>
+</div>
 </br>
 <img src="./images/Rufus.png" alt="Image of Completed Rufus Setup" width="100%"/>
 

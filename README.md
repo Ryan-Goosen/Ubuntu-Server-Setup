@@ -104,7 +104,7 @@ SETTING THE STATIC IP:
 </div>
 
 </br>
-<img src="./images/ISOHybrid image detected.png" alt="Image of ISO HYBRID IMAGE DETECTED popup" width="100%"/>
+<img src="./images/ISOHybrid image detected.png" alt="Image of ISO HYBRID IMAGE DETECTED popup" width="50%"/>
 </br>
 </br>
 
@@ -112,7 +112,7 @@ SETTING THE STATIC IP:
   <span style="font-size: 18px; font-weight: bold;">Completed Rufus Setup</span>
 </div>
 </br>
-<img src="./images/Rufus.png" alt="Image of Completed Rufus Setup" width="100%"/>
+<img src="./images/Rufus.png" alt="Image of Completed Rufus Setup" width="50%"/>
 
 
 ### STEP 2: Install Ubuntu Server on your chosen device

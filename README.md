@@ -1,4 +1,4 @@
-b# Ubuntu  Server Setup
+# Ubuntu  Server Setup
 
 ## <span style="font-variant: small-caps;">Introduction</span>
 
@@ -125,7 +125,7 @@ SETTING THE STATIC IP:
 
 *Things to note: To select something press on the spacebar. To move around use the arrow keys. When you are done configuring on a page move to the bottom and select done*
 
-**It you can make out what an image looks like click on it to enlarge it.**
+**If you cannot make out an image, click on it to enlarge it.**
 
 1. When it fully boots up you should see the following screen. Select "Try or Install Ubuntu Server".
    

@@ -1,4 +1,4 @@
-b# Ubuntu  Server Setup
+# Ubuntu  Server Setup
 
 ## <span style="font-variant: small-caps;">Introduction</span>
 

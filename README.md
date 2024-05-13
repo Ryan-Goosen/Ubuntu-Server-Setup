@@ -1,4 +1,4 @@
-# Ubuntu  Server Setup
+b# Ubuntu  Server Setup
 
 ## <span style="font-variant: small-caps;">Introduction</span>
 
@@ -21,7 +21,7 @@ SOFTWARE
 
 #### Use the software you are comfortable with. Since this document covers Ubuntu Server that is the OS we will be using. For USB boot software I have only used Rufus, but a quick Google search recommended me these alternatives. You don't have to use the same software as me but expect my setup to be different from yours if you do.
 
-- A copy of Ubuntu Server or you choice of OS. [LINK](https://ubuntu.com/download/server)
+- A copy of Ubuntu Server or you choice of OS. [LINK for Ubuntu Server](https://ubuntu.com/download/server)
 - A copy of utility software to create bootable USB drives. 
   - For WINDOWS I recommend Rufus. [LINK](https://rufus.ie/en/)
   - For LINUX it is recommend that you use VENTOY. [LINK](https://www.ventoy.net/en/download.html)
@@ -73,7 +73,6 @@ SETTING THE STATIC IP:
 
 
 
-
 ## <span style="font-variant: small-caps;">Setup</span>
 
 ### Overview of Steps
@@ -81,6 +80,11 @@ SETTING THE STATIC IP:
 #### - Step 1: Create a Bootable USB Drive
 #### - Step 2: Installing and Configuring Ubuntu Server
 #### - Step 3: Setting up and Configuring Samba
+#### - Step 4: Setting up and Configuring QBittorent in a docker container
+#### - Step 5: Setting up and Configuring JDownloader2 in a docker container
+#### - Step 6: Setting up and Configuring NEXTCLOUD
+
+***
 
 ### STEP 1: CREATE A BOOTABLE USB (USING RUFUS)
 
@@ -108,6 +112,7 @@ SETTING THE STATIC IP:
 </br>
 <img src="./images/Creating Bootdrive/Rufus.png" alt="Image of Completed Rufus Setup" width="50%"/>
 
+***
 
 ### STEP 2: Install Ubuntu Server on your chosen device
 
@@ -268,7 +273,7 @@ SETTING THE STATIC IP:
 
 14. Installing System:
 
-    WELLDONE, this is the final part. Wait for Ubuntu Server to install onto your old hardware. This process could take someone time so come back in like a half an hour.
+    Well Done, you are almost done. Wait for Ubuntu Server to install onto your old hardware. This process could take someone time so come back in like a half an hour.
 
     When the process is done select "REBOOT NOW" and remove the Bootdrive USB.
 
@@ -283,3 +288,120 @@ SETTING THE STATIC IP:
 <div style="text-align:center">
 <img src="./images/Ubuntu Server Install/18. What success looks like.PNG" alt="Installing System" width="50%"/> 
 </div>
+
+</br>
+16.  Setting your storage devices to auto mount when booting up your server 
+
+**If you are not using an additional drive you can skip this step**
+
+Useful commands to know
+        
+        sudo:                                   Does something as an administrator
+        ls -a :                                  View all files and Directories in the current directory you are in
+        cd /DirectoryName :          Move you into that directory if it exists
+        cd .. :                                  Move back 1 directory
+        mkdir /DirectoryPath:       Create a new directory in the path you set                    
+        blkid:                                  List all the devices currently attached to your system e.g. hard drives
+        df:                                       Lists all the devices currently mounted to your system
+        mount -a:                            Mounts all devices connected to your server 
+        
+Step 1: Create a new directory to mount your drive to.
+
+ **Note it is customary to create that file in the media directory**
+
+
+     sudo mkdir /media/Storage
+
+Step 2: Get the UUID of the device you want to mount and note the type.
+
+    sudo blkid
+
+Step 3: Edit system configuration file.
+**USE THE ARROW KEYS TO MOVE AROUND IN NANO**
+    
+    1. sudo nano /etc/fstab
+    2. UUID=deviceuuid      /mountlocation       /type     defaults    0    0
+    3. ctrl + x,    y,   enter
+
+**You can make a note above the edit you made using the # sign**
+
+**Replace the variables with your values, Use tab to make spaces in between each section**
+
+WHAT YOUR CONFIG SHOULD LOOK LIKE.
+<div style="text-align:center">
+<img src="./images/Ubuntu Server Install/19. FSTAB DOC.PNG" alt="Installing System" width="100%"/> 
+</div>
+
+****
+
+### STEP 3: Setting up and Configuring SAMBA (NETWORK STORAGE)
+**Note MAC & WINDOWS & LINUX machines can connect to a SAMBA server**
+
+1. Install samba
+
+    sudo apt install samba
+
+2. Create the directory you will be sharing.
+
+    sudo mkdir /media/servershare
+
+    **NOTE YOU CAN SHARE THE FOLDER YOU MOUNTED YOUR STORAGE TO**
+
+3. Change the permission for the directory.
+
+    sudo chown $USER: /media/servershare
+
+4.  Edit the samba config file.
+   
+    4.1. Open the config file:
+
+    sudo nano /etc/samba/smb.conf
+
+    4.2 Change to make:
+
+    1. map to guest = bad user > map to guest = never 
+   
+        **Avoids connection issues incase you enter the wrong credential from your client**
+    2. [Storage]                                - Just a tag for yourself
+
+        path=/media/servershare        - Path to the directory you want to share
+
+        writeable=yes                        - You can make change to the directory
+
+        public=no                             - The directory is not public
+
+    4.3 Save changes and exit:
+
+        ctrl + x,   y,    enter
+
+5. Mounting the share directories to your main device
+
+For Windows:
+1. Right click on this PC
+
+<div style="text-align:center">
+<img src="images/Samba%20sharing/1.png" alt="Installing System" width="50%"/> 
+</div>
+
+2. Click on map network drive
+
+<div style="text-align:center">
+<img src="images/Samba%20sharing/2.png" alt="Installing System" width="50%"/> 
+</div>
+
+3. Enter your servers IP address
+4.  Click browse, your server and all the folder you setup in samba should appear
+5.  Click on the folder you want to mount and click ok then finish
+6.  Check in file explorer side bar the folder you selected should appear there
+
+<div style="text-align:center">
+<img src="images/Samba%20sharing/3.png" alt="Installing System" width="50%"/> 
+</div>
+
+**NOTE YOU CAN RENAME THE DISPLAY NAME OF THE FOLDER IN WINDOWS EXPLORER**
+
+Simply right click on the folder and click rename
+
+RESOURCES USED:
+- auto mounting hard drives: https://www.youtube.com/watch?v=LkwZZIsY9uE&t=323s
+- most of the tutorial: https://www.youtube.com/watch?v=IuRWqzfX1ik&t=464s

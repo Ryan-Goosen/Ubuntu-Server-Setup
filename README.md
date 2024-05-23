@@ -77,16 +77,17 @@ SETTING THE STATIC IP:
 
 ### Overview of Steps
 
-#### - Step 1: Create a Bootable USB Drive
-#### - Step 2: Installing and Configuring Ubuntu Server
-#### - Step 3: Setting up and Configuring Samba
-#### - Step 4: Setting up and Configuring QBittorent in a docker container
-#### - Step 5: Setting up and Configuring JDownloader2 in a docker container
-#### - Step 6: Setting up and Configuring NEXTCLOUD
+ - [Step 1: Create a Bootable USB Drive](#step-1-create-a-bootable-usb-using-rufus)
+ - [Step 2: Installing and Configuring Ubuntu Server](#step-2-install-ubuntu-server-on-your-chosen-device)
+ - [Step 3: Setting up and Configuring Samba](#step-3-setting-up-and-configuring-samba-network-storage)
+ - [Step 4: Setting up Docker](#step-4-setting-up-docker)
+ - [Step 5: Setting up and Configuring QBittorent in a docker container](#step-5-setting-up-and-configuring-qbittorrent-in-a-docker-container)
+ - [Step 6: Setting up and Configuring JDownloader2 in a docker container](#step-6-setting-up-and-configuring-jdownloader2-in-a-docker-container)
+ - [Step 7: Setting up and Configuring Nextcloud](#step-7-setting-up-and-configuring-nextcloud)
 
 ***
 
-### STEP 1: CREATE A BOOTABLE USB (USING RUFUS)
+### STEP 1: CREATE A BOOTABLE USB (USING RUFUS).
 
 #### I would recommend you keep all the default the same. You can change the name of the flash drive by changing the text under 'VOLUME LABLE'.
 
@@ -114,7 +115,7 @@ SETTING THE STATIC IP:
 
 ***
 
-### STEP 2: Install Ubuntu Server on your chosen device
+### STEP 2: Install Ubuntu Server on your chosen device.
 
 **Note: The installation process will wipe the device you choose to install the OS on.**
 **BACKUP ANY DATA BEFORE CONTINUING**
@@ -332,9 +333,9 @@ WHAT YOUR CONFIG SHOULD LOOK LIKE.
 <img src="./images/Ubuntu Server Install/19. FSTAB DOC.PNG" alt="Installing System" width="100%"/> 
 </div>
 
-****
+***
 
-### STEP 3: Setting up and Configuring SAMBA (NETWORK STORAGE)
+### STEP 3: Setting up and Configuring SAMBA. (NETWORK STORAGE)
 **Note MAC & WINDOWS & LINUX machines can connect to a SAMBA server**
 
 1. Install samba
@@ -374,7 +375,11 @@ WHAT YOUR CONFIG SHOULD LOOK LIKE.
 
         ctrl + x,   y,    enter
 
-5. Mounting the share directories to your main device
+5. Set a password for SAMBA
+
+        sudo smbpasswd -a <username>
+
+6. Mounting the share directories to your main device
 
 For Windows:
 1. Right click on this PC
@@ -402,6 +407,34 @@ For Windows:
 
 Simply right click on the folder and click rename
 
-RESOURCES USED:
+***
+
+### Step 4: Setting up Docker
+
+
+***
+
+### Step 5: Setting up and Configuring QBittorrent in a docker container.
+
+1. Update System:
+
+    sudo apt update
+
+    sudo apt upgrade -y
+
+
+2. 
+
+***
+
+### Step 6: Setting up and Configuring JDownloader2 in a docker container. 
+
+***
+
+### Step 7: Setting up and Configuring Nextcloud. 
+
+***
+
+## RESOURCES USED:
 - auto mounting hard drives: https://www.youtube.com/watch?v=LkwZZIsY9uE&t=323s
 - most of the tutorial: https://www.youtube.com/watch?v=IuRWqzfX1ik&t=464s

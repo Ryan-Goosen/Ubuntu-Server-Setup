@@ -83,7 +83,6 @@ SETTING THE STATIC IP:
  - [Step 4: Setting up Docker](#step-4-setting-up-docker)
  - [Step 5: Setting up and Configuring QBittorent in a docker container](#step-5-setting-up-and-configuring-qbittorrent-in-a-docker-container)
  - [Step 6: Setting up and Configuring JDownloader2 in a docker container](#step-6-setting-up-and-configuring-jdownloader2-in-a-docker-container)
- - [Step 7: Setting up and Configuring Nextcloud](#step-7-setting-up-and-configuring-nextcloud)
 
 ***
 

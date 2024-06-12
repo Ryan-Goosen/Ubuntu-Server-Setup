@@ -465,14 +465,18 @@ Simply right click on the folder and click rename
 
 <img src="./images/Setting up docker/docker compose success.png" width=60% alt="image of what a successful docker compose installation looks like"  />
 
+7. Lastly create a folder for all your docker containers **Optional**
+
+        sudo mkdir /docker-container
+
 ***
 
 ### Step 5: Setting up and Configuring QBittorrent in a docker container.
 
 #### 1. Create a directory for the docker file and CD into that directory
 
-    sudo mkdir -p /opt/stacks/qbittorrent
-    cd /opt/stacks/qbittorrent
+    sudo mkdir -p /docker-container/qbittorrent
+    cd /docker-container/qbittorrent
 
 **By using the “-p” option, the mkdir command will create all the directories within the given path.**
 
@@ -531,13 +535,78 @@ The below command will display all the docker container that are currently activ
 
     docker ps 
 
+#### 5. Go to the website
+
+    open a web browser and enter the ip address of the server and the choosen port.
+
+    e.g. 127.0.0.1:6881
+
+The default login is 
+username: admin
+password: admin
+
+If this is not working, stop the container and compose it again with out the d. This will display the current password for qbittorrent.
+
+    docker compose up
+
+To change the password after login in go to:
+
+        setting >> connection >> password
+
 ***
 
 ### Step 6: Setting up and Configuring JDownloader2 in a docker container. 
 
+#### 1. Create a folder for the container
+
+        sudo mkdir -p /docker-container/jdownloader
+        cd /docker-container/jdownloader
+
+**By using the “-p” option, the mkdir command will create all the directories within the given path.**
+
+#### 2. Create a docker compose file and fill it in
+
+        sudo nano docker-compose.yml
+
+**You should see a blank screen, Copy the below text and edit where necessary**
+
+        version: '3'
+        services:
+            jdownloader-2:
+                image: jlesage/jdownloader-2
+                ports:
+                  - "5800:5800"
+                volumes:
+                  - "/docker/appdata/jdownloader-2:/config:rw"
+                  - "/media/storage/downloads:/output:rw"
+                restart: unless-stopped
+
+- image: Is the docker image we will be using if you want to use a different docker image change that line
+- ports: Is the port that the program will be available on,  if you are planning on changing the port, only change the left one keep the right one the same
+- "/media/storage/downloads:/output:rw" this line is the download location for your jdownloader
+- restart: unless-stopped will let the container run in the background on start up and will only stop if you stop the program
+
+#### 3. Check if the container is running
+
+The below command will display all the docker container that are currently active.
+
+    docker ps 
+
+#### 4. Open the website
+
+    open a web browser and enter the ip address of the server and the choosen port.
+
+    e.g. 127.0.0.1:5800
+
+    You should be redirected to jdownloader.
+
+#### 5. MyJdownloader  **Optional**
+
+    It is the same as jdownloader but it lets you use jdownloader without needing to be connected to the same router as your server.
+
+    Follow there instructions, setup is pretty straight forward.
+
 ***
-
-
 
 ## RESOURCES USED:
 

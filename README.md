@@ -80,10 +80,9 @@ SETTING THE STATIC IP:
  - [Step 1: Create a Bootable USB Drive](#step-1-create-a-bootable-usb-using-rufus)
  - [Step 2: Installing and Configuring Ubuntu Server](#step-2-install-ubuntu-server-on-your-chosen-device)
  - [Step 3: Setting up and Configuring Samba](#step-3-setting-up-and-configuring-samba-network-storage)
- - [Step 4: Setting up Docker](#step-4-setting-up-docker)
+ - [Step 4: Setting up Docker](#step-4-setting-up-docker--docker-compose)
  - [Step 5: Setting up and Configuring QBittorent in a docker container](#step-5-setting-up-and-configuring-qbittorrent-in-a-docker-container)
  - [Step 6: Setting up and Configuring JDownloader2 in a docker container](#step-6-setting-up-and-configuring-jdownloader2-in-a-docker-container)
- - [Step 7: Setting up and Configuring Nextcloud](#step-7-setting-up-and-configuring-nextcloud)
 
 ***
 

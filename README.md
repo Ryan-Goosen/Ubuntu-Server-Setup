@@ -614,3 +614,4 @@ The below command will display all the docker container that are currently activ
 - qbittorrent in a docker container: https://pimylifeup.com/docker-qbittorrent/
 - setting up docker: https://docs.docker.com/engine/install/ubuntu/#uninstall-docker-engine
 - setting up docker compose: https://docs.docker.com/compose/install/linux/
+- jdownloader in docker container: https://github.com/jlesage/docker-jdownloader-2?tab=readme-ov-file#docker-compose-file

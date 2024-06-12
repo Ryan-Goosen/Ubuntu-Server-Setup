@@ -409,21 +409,127 @@ Simply right click on the folder and click rename
 
 ***
 
-### Step 4: Setting up Docker
+### Step 4: Setting up Docker & Docker Compose
 
+1. Remove all conflicting packages
+
+    for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+
+2. Set up Docker's apt repository
+
+    Add Docker's official GPG key:
+
+        sudo apt-get update
+
+        sudo apt-get install ca-certificates curl
+
+        sudo install -m 0755 -d /etc/apt/keyrings
+
+        sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+        
+        sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+    Add the repository to Apt sources:
+
+        echo \
+        "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+        $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+        
+        sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+        
+        sudo apt-get update
+
+3. Install docker packages
+
+        sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+4. Verify that everything is running smoothly
+
+        sudo docker run hello-world
+
+#### What success looks like
+
+<img src="./images/Setting up docker/docker success message.png" width=60% alt="image of what a successful docker installation looks like"  />
+
+5.  The below command is to install the latest version of docker compose
+
+        sudo apt-get update
+        
+        sudo apt-get install docker-compose-plugin
+
+6. Check that docker compose installed successfully
+
+        docker compose version
+
+#### What success looks like
+
+<img src="./images/Setting up docker/docker compose success.png" width=60% alt="image of what a successful docker compose installation looks like"  />
 
 ***
 
 ### Step 5: Setting up and Configuring QBittorrent in a docker container.
 
-1. Update System:
+#### 1. Create a directory for the docker file and CD into that directory
 
-    sudo apt update
+    sudo mkdir -p /opt/stacks/qbittorrent
+    cd /opt/stacks/qbittorrent
 
-    sudo apt upgrade -y
+**By using the “-p” option, the mkdir command will create all the directories within the given path.**
 
+#### 2. Write the docker compose file
+Open the YAML file
 
-2. 
+    sudo nano compose.yaml
+
+What you should add
+
+    version: "3.9"
+
+    services:
+    qbittorrent-nox:
+            container_name: qbittorrent-nox
+            environment:
+                #- PGID=1000
+                #- PUID=1000
+                - QBT_EULA=<accepteula>
+                - QBT_VERSION=latest
+                - QBT_WEBUI_PORT=<port you want to use>
+                - TZ=<timezone>
+            image: qbittorrentofficial/qbittorrent-nox:latest
+            ports:
+                - 6881:6881/tcp
+                - 6881:6881/udp
+                - <port>:<port>/tcp
+            read_only: true
+            stop_grace_period: 30m
+            tmpfs:
+                - /tmp
+            tty: true
+            volumes:
+                - ./config:/config
+                - <storage location>:<storage location>
+            restart: unless-stopped
+
+- accept eula: change to "accept" if you accept the eula
+- port: change to the port you want to use e.g. 8080
+- timezone: change to the timezone you want to use e.g. Africa/Cairo 
+[wikepedia link to help find timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+- storage location: the path to the place you want to download to e.g. /media/Storage
+- Save and Exit 
+
+        ctrl + x , y , ENTER
+
+#### 3. Starting qBittorrent Container
+
+You need to run this command in the same folder as the docker file, its starts the container in the background.
+
+    docker compose up -d
+
+#### 4. Check if the container is running
+
+The below command will display all the docker container that are currently active.
+
+    docker ps 
 
 ***
 
@@ -431,10 +537,12 @@ Simply right click on the folder and click rename
 
 ***
 
-### Step 7: Setting up and Configuring Nextcloud. 
 
-***
 
 ## RESOURCES USED:
+
 - auto mounting hard drives: https://www.youtube.com/watch?v=LkwZZIsY9uE&t=323s
 - most of the tutorial: https://www.youtube.com/watch?v=IuRWqzfX1ik&t=464s
+- qbittorrent in a docker container: https://pimylifeup.com/docker-qbittorrent/
+- setting up docker: https://docs.docker.com/engine/install/ubuntu/#uninstall-docker-engine
+- setting up docker compose: https://docs.docker.com/compose/install/linux/
